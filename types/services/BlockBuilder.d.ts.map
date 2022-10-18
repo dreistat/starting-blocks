@@ -1,0 +1,1 @@
+{"version":3,"file":"BlockBuilder.d.ts","sourceRoot":"","sources":["../../src/services/BlockBuilder.ts"],"names":[],"mappings":"AAOA,OAAO,oBAAoB,MAAM,mCAAmC,CAAA;AAGpE,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,oBAAoB;gBAC7C,SAAS,EAAE,MAAM,EAAE,WAAW,SAAiB;IAM5D;;;;;;;;;OASG;IACG,gBAAgB,CAAE,SAAS,EAAE,MAAM;CAO5C"}

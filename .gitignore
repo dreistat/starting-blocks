@@ -130,3 +130,5 @@ fabric.properties
 # Config & Examples dist
 /examples/src/js/config/config.js
 /examples/dist/
+
+.idea
