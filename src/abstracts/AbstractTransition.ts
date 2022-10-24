@@ -118,9 +118,7 @@ export default class AbstractTransition extends AbstractService {
         this.destroyOldPage()
 
         const visibility = this.newPage!.rootElement!.style.visibility
-        // TODO(steko): logic change
-        // if (visibility !== 'inherit' || visibility !== 'hidden') {
-        if (visibility !== 'hidden') {
+        if (visibility !== 'inherit') {
             this.newPage!.rootElement!.style.visibility = 'visible'
         }
 
