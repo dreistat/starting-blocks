@@ -449,49 +449,47 @@ To launch the example you need to change the `examples/srv/js/config/config.exam
 
 ## Go further with Starting Blocks
 
-If you use *Webpack* you will be able to dynamically lazy-load your blocks with a custom `BlockBuilder`.
+If you use *Vite* you will be able to dynamically lazy-load your blocks with a custom `BlockBuilder`.
 Create a custom *BlockBuilder* and override the default one:
 
 ```js
-import { AbstractBlockBuilder } from 'starting-blocks'
+import { AbstractBlockBuilder } from 'starting-blocks';
 
-export default class WebpackAsyncBlockBuilder extends AbstractBlockBuilder {
+export default class AsyncBlockBuilder extends AbstractBlockBuilder {
     // Dynamic import
-    async getBlockInstance (nodeTypeName) {
+    async getBlockInstance(nodeTypeName) {
         try {
-            const Block = await this.getModule(nodeTypeName)
+            const Block = await this.getModule(nodeTypeName);
 
             if (!this.hasService(nodeTypeName)) {
                 this.container.$register({
                     $name: nodeTypeName,
                     $type: 'instanceFactory',
-                    $value: c => {
-                        return new Block(c)
-                    }
-                })
+                    $value: (c) => {
+                        return new Block(c);
+                    },
+                });
             }
 
-            return this.getService(nodeTypeName).instance()
+            return this.getService(nodeTypeName).instance();
         } catch (e) {
-            console.error(e.message)
-            return null
+            console.error(e.message);
+            return null;
         }
     }
 
-    async getModule (nodeTypeName) {
-        return import(`../blocks/${nodeTypeName}` /* webpackChunkName: "block-" */)
-            .then(block => {
-                return block.default
-            })
+    async getModule(nodeTypeName) {
+        return (await import(`../blocks/${nodeTypeName}.ts`)).default;
     }
 }
+
 ```
 
 Then override the default `PageBuilder` service:
 
 ```js
 // Custom block builder (dynamic import)
-startingBlocks.provider('BlockBuilder', WebpackAsyncBlockBuilder)
+startingBlocks.provider('BlockBuilder', AsyncBlockBuilder)
 ```
 
 ## Contributors
