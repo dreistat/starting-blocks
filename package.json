@@ -21,7 +21,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "bottlejs": "1.7.1"
+        "bottlejs": "^2.0.1"
     },
     "devDependencies": {
         "typescript": "^4.6.4",
