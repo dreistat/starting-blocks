@@ -25,5 +25,5 @@ export default class AbstractTransitionFactory extends AbstractService {
      * @returns {AbstractTransition}
      * @abstract
      */
-    getTransition (_previousState: HistoryStatus, _state: HistoryStatus) {}
+    getTransition (_previousState: HistoryStatus, _state: HistoryStatus): any {}
 }
