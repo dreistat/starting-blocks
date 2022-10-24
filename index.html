@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StartingBlocks</title>
-  </head>
-  <body>
-    <script type="module" src="src/main.ts"></script>
-  </body>
+    <title>StartingBlocks - Home</title>
+</head>
+    <body>
+        <div id="sb-wrapper">
+            <div id="page-home" class="page-content" data-node-type="DefaultPage" data-node-name="home" data-is-home="1" data-meta-title="StartingBlocks - Home">
+                <a href="/about.html">about</a>
+            </div>
+        </div>
+        <script type="module">
+            import StartingBlocks, {History, Pjax, Prefetch, CacheProvider} from './src/main.ts';
+
+            const sb = new StartingBlocks({
+                debug: 1,
+            });
+
+            sb.bootableProvider('Pjax', Pjax);
+            sb.bootableProvider('Prefetch', Prefetch);
+            sb.provider('History', History);
+            sb.provider('CacheProvider', CacheProvider);
+
+            sb.boot();
+        </script>
+    </body>
 </html>
