@@ -23,17 +23,27 @@ import DefaultPage from './pages/DefaultPage.js'
  * @const
  * @default
  */
-const CONFIG = {
-    defaults: {
-        wrapperId: 'sb-wrapper',
-        pageBlockClass: 'page-block',
-        pageClass: 'page-content',
-        objectTypeAttr: 'data-node-type',
-        noAjaxLinkClass: 'no-ajax-link',
-        noPrefetchClass: 'no-prefetch',
-        manualDomAppend: false,
-        debug: 0
-    }
+
+interface StartingBlocksOptions {
+    wrapperId?: string;
+    pageBlockClass?: string,
+    pageClass?: string,
+    objectTypeAttr?: string,
+    noAjaxLinkClass?: string,
+    noPrefetchClass?: string,
+    manualDomAppend?: boolean,
+    debug?: number,
+}
+
+const CONFIG_DEFAULTS = {
+    wrapperId: 'sb-wrapper',
+    pageBlockClass: 'page-block',
+    pageClass: 'page-content',
+    objectTypeAttr: 'data-node-type',
+    noAjaxLinkClass: 'no-ajax-link',
+    noPrefetchClass: 'no-prefetch',
+    manualDomAppend: false,
+    debug: 0
 }
 
 declare global {
@@ -47,12 +57,12 @@ export default class StartingBlocks {
     public bottle;
     public bootables: any[]
 
-    constructor (config = {}) {
+    constructor (config: StartingBlocksOptions = {}) {
         this.bottle = new Bottle()
         this.bootables = []
 
         this.bottle.value('Config', {
-            ...CONFIG.defaults,
+            ...CONFIG_DEFAULTS,
             ...config
         })
 
