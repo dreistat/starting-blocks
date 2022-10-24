@@ -17,6 +17,6 @@ export default class AbstractTransitionFactory extends AbstractService {
      * @returns {AbstractTransition}
      * @abstract
      */
-    getTransition(_previousState: HistoryStatus, _state: HistoryStatus): void;
+    getTransition(_previousState: HistoryStatus, _state: HistoryStatus): any;
 }
 //# sourceMappingURL=AbstractTransitionFactory.d.ts.map
