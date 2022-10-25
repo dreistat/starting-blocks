@@ -33,5 +33,6 @@ export { default as debounce } from './utils/debounce'
 // export { default as BootstrapMedia } from './utils/BootstrapMedia'
 export { default as Dispatcher } from './dispatcher/Dispatcher'
 export { EventTypes }
+export { default as logger } from './utils/Logger'
 
 export default StartingBlocks

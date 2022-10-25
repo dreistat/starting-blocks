@@ -34,3 +34,14 @@ export function error (...args: any[]) {
         console.error('[SB]', ...args)
     }
 }
+
+const logger = {
+    log,
+    debug,
+    info,
+    warn,
+    error,
+}
+
+export default logger
+
