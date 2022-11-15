@@ -22,11 +22,13 @@
  * @file Events.js
  * @author Ambroise Maupate
  */
-import { EventType } from "../types/EventTypes";
+import type { EventType as EventTypes } from "../types/EventTypes";
+declare type EventType = EventTypes | string;
 /**
  * Event dispatcher.
  */
 export default class Dispatcher {
-    static commit(eventType: EventType, detail: any): void;
+    static commit(eventType: EventType, detail?: any): void;
 }
+export {};
 //# sourceMappingURL=Dispatcher.d.ts.map
