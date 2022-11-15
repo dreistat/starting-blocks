@@ -24,13 +24,15 @@
  */
 
 import { debug } from '../utils/Logger'
-import {EventType} from "../types/EventTypes";
+import type {EventType as EventTypes} from "../types/EventTypes";
+
+type EventType = EventTypes | string;
 
 /**
  * Event dispatcher.
  */
 export default class Dispatcher {
-    static commit (eventType: EventType, detail: any) {
+    static commit(eventType: EventType, detail?: any) {
         const event = new window.CustomEvent(eventType, { detail })
         debug('🚩 Dispatched ' + eventType)
         window.dispatchEvent(event)
