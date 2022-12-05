@@ -1,7 +1,7 @@
-var Y = Object.defineProperty;
-var K = (n, t, e) => t in n ? Y(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
+var X = Object.defineProperty;
+var K = (n, t, e) => t in n ? X(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var a = (n, t, e) => (K(n, typeof t != "symbol" ? t + "" : t, e), e);
-const _ = "SB_BEFORE_PAGE_LOAD", L = "SB_AFTER_PAGE_LOAD", F = "SB_AFTER_DOM_APPENDED", D = "SB_CONTAINER_READY", x = "SB_AFTER_PAGE_BOOT", H = "SB_TRANSITION_START", R = "SB_TRANSITION_COMPLETE", O = "SB_BEFORE_SPLASHSCREEN_HIDE", J = "SB_START_SPLASHSCREEN_HIDE", I = "SB_AFTER_SPLASHSCREEN_HIDE", He = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const _ = "SB_BEFORE_PAGE_LOAD", L = "SB_AFTER_PAGE_LOAD", F = "SB_AFTER_DOM_APPENDED", D = "SB_CONTAINER_READY", x = "SB_AFTER_PAGE_BOOT", H = "SB_TRANSITION_START", R = "SB_TRANSITION_COMPLETE", O = "SB_BEFORE_SPLASHSCREEN_HIDE", J = "SB_START_SPLASHSCREEN_HIDE", I = "SB_AFTER_SPLASHSCREEN_HIDE", Re = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   BEFORE_PAGE_LOAD: _,
   AFTER_PAGE_LOAD: L,
@@ -32,12 +32,12 @@ var f, p = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
     enumerable: !0
   };
   return t.length ? s.get = function() {
-    var c = 0, l = function(g) {
+    var l = 0, c = function(g) {
       if (g)
         throw g;
-      t[c] && t[c++](i, l);
+      t[l] && t[l++](i, c);
     };
-    return l(), i;
+    return c(), i;
   } : (s.value = i, s.writable = !0), Object.defineProperty(r, e, s), r[e];
 }, te = function(t, e) {
   var i, r;
@@ -47,8 +47,8 @@ var f, p = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
 }, T = function(t, e) {
   return (t[e] || []).concat(t.__global__ || []);
 }, re = function(t, e) {
-  var i, r, s, o, c;
-  return this.id, s = this.container, o = this.decorators, c = this.middlewares, i = t + E, r = /* @__PURE__ */ Object.create(null), r[i] = {
+  var i, r, s, o, l;
+  return this.id, s = this.container, o = this.decorators, l = this.middlewares, i = t + E, r = /* @__PURE__ */ Object.create(null), r[i] = {
     configurable: !0,
     enumerable: !0,
     get: function() {
@@ -61,7 +61,7 @@ var f, p = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
     get: function() {
       var h = s[i], g;
       return h && (g = T(o, t).reduce(ie, h.$get(s)), delete s[i], delete s[t]), g === void 0 ? g : ee(
-        T(c, t),
+        T(l, t),
         t,
         g,
         s
@@ -78,26 +78,26 @@ var f, p = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
 }, G = function(t, e, i) {
   var r = arguments.length > 3 ? P.call(arguments, 3) : [], s = this;
   return k.call(this, t, function() {
-    var c = e, l = r.map($, s.container);
-    return i ? new (e.bind.apply(e, [null].concat(l)))() : c.apply(null, l);
+    var l = e, c = r.map($, s.container);
+    return i ? new (e.bind.apply(e, [null].concat(c)))() : l.apply(null, c);
   });
 }, ne = function(t, e) {
   return G.apply(this, [t, e, !0].concat(P.call(arguments, 2)));
 }, se = function(t, e) {
   return G.apply(this, [t, e, !1].concat(P.call(arguments, 2)));
-}, q = function(t, e) {
+}, U = function(t, e) {
   Object.defineProperty(this, t, {
     configurable: !0,
     enumerable: !0,
     value: e,
     writable: !0
   });
-}, U = function(t, e) {
+}, q = function(t, e) {
   var i = t[e];
-  return i || (i = {}, q.call(t, e, i)), i;
+  return i || (i = {}, U.call(t, e, i)), i;
 }, oe = function(t, e) {
   var i;
-  return i = t.split(p), t = i.pop(), q.call(i.reduce(U, this.container), t, e), this;
+  return i = t.split(p), t = i.pop(), U.call(i.reduce(q, this.container), t, e), this;
 }, ae = function(t, e) {
   Object.defineProperty(this, t, {
     configurable: !1,
@@ -105,13 +105,13 @@ var f, p = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
     value: e,
     writable: !1
   });
-}, ce = function(t, e) {
+}, le = function(t, e) {
   var i = t.split(p);
-  return t = i.pop(), ae.call(i.reduce(U, this.container), t, e), this;
+  return t = i.pop(), ae.call(i.reduce(q, this.container), t, e), this;
 }, W = function(t, e) {
   var i, r;
   return typeof t === N && (e = t, t = j), i = t.split(p), r = i.shift(), i.length ? m.call(this, r).decorator(i.join(p), e) : (this.decorators[r] || (this.decorators[r] = []), this.decorators[r].push(e)), this;
-}, le = function(t) {
+}, ce = function(t) {
   return this.deferred.push(t), this;
 }, ue = function(t) {
   return (t || []).map($, this.container);
@@ -158,9 +158,9 @@ f = function n(t) {
   };
 };
 f.prototype = {
-  constant: ce,
+  constant: le,
   decorator: W,
-  defer: le,
+  defer: ce,
   digest: ue,
   factory: k,
   instanceFactory: de,
@@ -190,17 +190,17 @@ function d(n, t = "") {
 function ye(...n) {
   window.startingBlocksDebugLevel === 1 && console.info("[SB]", ...n);
 }
-function X(...n) {
+function Y(...n) {
   window.startingBlocksDebugLevel === 1 && console.warn("[SB]", ...n);
 }
 function me(...n) {
   window.startingBlocksDebugLevel === 1 && console.error("[SB]", ...n);
 }
-const Re = {
+const Oe = {
   log: be,
   debug: d,
   info: ye,
-  warn: X,
+  warn: Y,
   error: me
 };
 class v {
@@ -337,8 +337,8 @@ function C(n, t, e) {
     let r = this, s = arguments, o = function() {
       i = null, e || n.apply(r, Array.from(s));
     };
-    const c = e && !i;
-    i && clearTimeout(i), i = window.setTimeout(o, t), c && n.apply(r, Array.from(s));
+    const l = e && !i;
+    i && clearTimeout(i), i = window.setTimeout(o, t), l && n.apply(r, Array.from(s));
   };
 }
 class Be extends w {
@@ -401,7 +401,7 @@ class Be extends w {
           let o = await this.initSingleBlock(this.blockElements[i]);
           o && (this.blocks.push(o), o.onPageReady());
         } catch (o) {
-          X(o.message);
+          Y(o.message);
         }
     }
   }
@@ -455,7 +455,7 @@ const _e = {
   manualDomAppend: !1,
   debug: 0
 };
-class Oe {
+class Ie {
   constructor(t = {}) {
     a(this, "bottle");
     a(this, "bootables");
@@ -524,17 +524,17 @@ class u {
   static logCredits(t, e, i, r, s) {
     let o = "#fff";
     if (typeof s < "u" && (o = s), console.log("%c   ", "font-size:3px;"), console.log("%c" + t, "background:" + e + "; color: " + o + "; font-size:14px; padding:5px 10px;"), console.log("%c   ", "font-size:3px;"), i !== null) {
-      let c = i.length;
-      if (c)
-        for (let l = 0; l < c; l++)
-          console.log(i[l].name + " - " + i[l].website);
+      let l = i.length;
+      if (l)
+        for (let c = 0; c < l; c++)
+          console.log(i[c].name + " - " + i[c].website);
     }
     if (r !== null) {
-      let c = r.length;
-      if (c) {
+      let l = r.length;
+      if (l) {
         console.log("-"), console.log("Thanks to");
-        for (let l = 0; l < c; l++)
-          console.log(r[l].name + " (" + r[l].website + ")");
+        for (let c = 0; c < l; c++)
+          console.log(r[c].name + " (" + r[c].website + ")");
       }
     }
     console.log("-"), console.log(" ");
@@ -566,9 +566,9 @@ class u {
     const e = ["", "ms", "Webkit", "Moz", "O"], i = e.length, r = document.createElement("div");
     for (let s = 0; s < i; s++) {
       let o = e[s];
-      const c = o === "" ? t : t.charAt(0).toUpperCase() + t.substring(1).toLowerCase(), l = o + c;
-      if (typeof r.style[l] < "u")
-        return l;
+      const l = o === "" ? t : t.charAt(0).toUpperCase() + t.substring(1).toLowerCase(), c = o + l;
+      if (typeof r.style[c] < "u")
+        return c;
     }
     return null;
   }
@@ -632,7 +632,7 @@ class Fe extends Le {
     document.body.scrollTop = 0, this.done();
   }
 }
-class Ie extends S {
+class Ne extends S {
   constructor(e, i = "Pjax") {
     super(e, i, ["Dom", "Config", "History", "PageBuilder"]);
     a(this, "transitionProgress");
@@ -714,22 +714,22 @@ class Ie extends S {
       currentStatus: this.getService("History").currentStatus(),
       prevStatus: this.getService("History").prevStatus()
     });
-    const c = this.load(o), l = this.getTransition(
+    const l = this.load(o), c = this.getTransition(
       this.getService("History").prevStatus(),
       this.getService("History").currentStatus()
     );
     this.transitionProgress = !0, v.commit(H, {
-      transition: l,
+      transition: c,
       currentStatus: this.getService("History").currentStatus(),
       prevStatus: this.getService("History").prevStatus()
     });
-    const h = l.initTransition(
+    const h = c.initTransition(
       this.getService("PageBuilder").page,
-      c,
+      l,
       r,
       s
     );
-    c.then(this.onNewPageLoaded), h.then(this.onTransitionEnd);
+    l.then(this.onNewPageLoaded), h.then(this.onTransitionEnd);
   }
   onNewPageLoaded(e) {
     if (e) {
@@ -749,7 +749,7 @@ class Ie extends S {
     });
   }
 }
-class Ne extends w {
+class Me extends w {
   constructor(e, i = "History") {
     super(e, i);
     a(this, "history");
@@ -767,7 +767,7 @@ class Ne extends w {
     return e.length < 2 ? null : e[e.length - 2];
   }
 }
-class Me extends S {
+class je extends S {
   constructor(t, e = "Prefetch") {
     super(t, e, ["Pjax", "Config"]), d(`\u2615\uFE0F ${e} awake`);
   }
@@ -789,7 +789,7 @@ class Me extends S {
     }
   }
 }
-class je extends w {
+class $e extends w {
   constructor(e, i = "CacheProvider") {
     super(e, i);
     a(this, "data");
@@ -833,7 +833,7 @@ class De extends w {
   onPageReady() {
   }
 }
-class $e extends De {
+class ze extends De {
   constructor(e, i = "AbstractInViewBlock") {
     super(e, i);
     a(this, "observer");
@@ -862,7 +862,7 @@ class $e extends De {
     this.observer.unobserve(this.rootElement);
   }
 }
-class ze extends S {
+class Ge extends S {
   constructor(e, i = "AbstractSplashscreen") {
     super(e, i);
     a(this, "_splashscreenHidden");
@@ -878,7 +878,7 @@ class ze extends S {
     return Promise.resolve();
   }
 }
-class Ge extends w {
+class Ue extends w {
   getTransition(t, e) {
   }
 }
@@ -904,7 +904,51 @@ class b {
     window.removeEventListener && window.removeEventListener("wheel", b._wheel, !1), window.onmousewheel = document.onmousewheel = document.onkeydown = null;
   }
 }
-function qe() {
+function xe(n, t, e) {
+  let i, r, s, o = null, l = 0;
+  e || (e = {});
+  let c = function() {
+    l = e && !e.leading ? 0 : Date.now(), o = null, s = n.apply(i, r), o || (i = r = null);
+  };
+  return function() {
+    let h = Date.now();
+    !l && e && !e.leading && (l = h);
+    let g = t - (h - l);
+    return i = this, r = arguments, g <= 0 || g > t ? (o && (clearTimeout(o), o = null), l = h, s = n.apply(i, r), o || (i = r = null)) : !o && (e && e.trailing) !== !1 && (o = setTimeout(c, g)), s;
+  };
+}
+class qe {
+  constructor(t) {
+    a(this, "options");
+    a(this, "lastScrollTop");
+    a(this, "_handleScroll");
+    a(this, "handleScroll", () => {
+      let t = window.scrollY || document.documentElement.scrollTop;
+      const e = (t - this.lastScrollTop) * (1 / this.options.wait) * 100;
+      this.lastScrollTop = t, typeof this.options.onUpdate == "function" && this.options.onUpdate(e);
+    });
+    this.options = {
+      wait: 32,
+      onUpdate: () => {
+      },
+      ...t
+    }, this.lastScrollTop = 0, this._handleScroll = () => {
+    }, this.init();
+  }
+  init() {
+    this._handleScroll = xe(this.handleScroll, this.options.wait), this.initEvents();
+  }
+  destroy() {
+    this.destroyEvents();
+  }
+  initEvents() {
+    window.addEventListener("scroll", this._handleScroll);
+  }
+  destroyEvents() {
+    window.addEventListener("scroll", this._handleScroll);
+  }
+}
+function We() {
   window.requestAnimFrame = function() {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(n) {
       window.setTimeout(n, 1e3 / 60);
@@ -986,7 +1030,7 @@ function qe() {
     n.prototype = window.Event.prototype, window.CustomEvent = n;
   }();
 }
-function Ue() {
+function Ve() {
   typeof window.ga < "u" && window.addEventListener("error", function(n) {
     const t = n.colno ? " line:" + n.lineno + ", column:" + n.colno : " line:" + n.lineno;
     window.ga(
@@ -1000,19 +1044,6 @@ function Ue() {
     );
   });
 }
-function We(n, t, e) {
-  let i, r, s, o = null, c = 0;
-  e || (e = {});
-  let l = function() {
-    c = e && !e.leading ? 0 : Date.now(), o = null, s = n.apply(i, r), o || (i = r = null);
-  };
-  return function() {
-    let h = Date.now();
-    !c && e && !e.leading && (c = h);
-    let g = t - (h - c);
-    return i = this, r = arguments, g <= 0 || g > t ? (o && (clearTimeout(o), o = null), c = h, s = n.apply(i, r), o || (i = r = null)) : !o && (e && e.trailing) !== !1 && (o = setTimeout(l, g)), s;
-  };
-}
 /*!
  * @name Starting Blocks
  * @license MIT
@@ -1024,27 +1055,28 @@ function We(n, t, e) {
 export {
   De as AbstractBlock,
   ke as AbstractBlockBuilder,
-  $e as AbstractInViewBlock,
+  ze as AbstractInViewBlock,
   Be as AbstractPage,
   w as AbstractService,
-  ze as AbstractSplashscreen,
+  Ge as AbstractSplashscreen,
   Le as AbstractTransition,
-  Ge as AbstractTransitionFactory,
+  Ue as AbstractTransitionFactory,
   Ae as BlockBuilder,
-  je as CacheProvider,
+  $e as CacheProvider,
   Fe as DefaultTransition,
+  qe as DeltaScroll,
   v as Dispatcher,
-  He as EventTypes,
-  Ne as History,
+  Re as EventTypes,
+  Me as History,
   Pe as PageBuilder,
-  Ie as Pjax,
-  Me as Prefetch,
+  Ne as Pjax,
+  je as Prefetch,
   b as Scroll,
   u as Utils,
   C as debounce,
-  Oe as default,
-  Ue as gaTrackErrors,
-  Re as logger,
-  qe as polyfills,
-  We as throttle
+  Ie as default,
+  Ve as gaTrackErrors,
+  Oe as logger,
+  We as polyfills,
+  xe as throttle
 };
