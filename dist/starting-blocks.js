@@ -852,7 +852,7 @@ class $e extends De {
   }
   onIntersectionCallback(e) {
     for (const i of e)
-      i.intersectionRatio > 0 ? this.onScreen(i) : this.offScreen(i);
+      i.isIntersecting ? this.onScreen(i) : this.offScreen(i);
   }
   onScreen(e) {
   }
