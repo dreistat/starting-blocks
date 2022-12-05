@@ -1004,13 +1004,13 @@ function We(n, t, e) {
   let i, r, s, o = null, c = 0;
   e || (e = {});
   let l = function() {
-    c = e.leading ? Date.now() : 0, o = null, s = n.apply(i, r), o || (i = r = null);
+    c = e && !e.leading ? 0 : Date.now(), o = null, s = n.apply(i, r), o || (i = r = null);
   };
   return function() {
     let h = Date.now();
-    !c && !e.leading && (c = h);
+    !c && e && !e.leading && (c = h);
     let g = t - (h - c);
-    return i = this, r = arguments, g <= 0 || g > t ? (o && (clearTimeout(o), o = null), c = h, s = n.apply(i, r), o || (i = r = null)) : !o && e.trailing !== !1 && (o = setTimeout(l, g)), s;
+    return i = this, r = arguments, g <= 0 || g > t ? (o && (clearTimeout(o), o = null), c = h, s = n.apply(i, r), o || (i = r = null)) : !o && (e && e.trailing) !== !1 && (o = setTimeout(l, g)), s;
   };
 }
 /*!
