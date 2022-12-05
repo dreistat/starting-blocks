@@ -44,7 +44,7 @@ export default class AbstractInViewBlock extends AbstractBlock {
 
     onIntersectionCallback (entries: IntersectionObserverEntry[]) {
         for (const entry of entries) {
-            if (entry.intersectionRatio > 0) {
+            if (entry.isIntersecting) {
                 this.onScreen(entry)
             } else {
                 this.offScreen(entry)
