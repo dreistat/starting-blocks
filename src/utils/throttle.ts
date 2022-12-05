@@ -9,20 +9,20 @@ interface ThrottleOptions {
     trailing?: boolean;
 }
 
-export default function throttle(func: any, wait: number, options: ThrottleOptions) {
+export default function throttle(func: any, wait: number, options?: ThrottleOptions) {
     let context: any, args: any, result: any;
     let timeout: number | null = null;
     let previous = 0;
     if (!options) options = {};
     let later = function() {
-        previous = !options.leading ? 0 : Date.now();
+        previous = (options && !options.leading) ? 0 : Date.now();
         timeout = null;
         result = func.apply(context, args);
         if (!timeout) context = args = null;
     };
     return function(this: any) {
         let now = Date.now();
-        if (!previous && !options.leading) previous = now;
+        if (!previous && (options && !options.leading)) previous = now;
         let remaining = wait - (now - previous);
         context = this;
         args = arguments;
@@ -34,7 +34,7 @@ export default function throttle(func: any, wait: number, options: ThrottleOptio
             previous = now;
             result = func.apply(context, args);
             if (!timeout) context = args = null;
-        } else if (!timeout && options.trailing !== false) {
+        } else if (!timeout && (options && options.trailing) !== false) {
             timeout = setTimeout(later, remaining);
         }
         return result;
