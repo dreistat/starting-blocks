@@ -28,6 +28,7 @@ export { default as Scroll } from './utils/Scroll';
 export { default as polyfills } from './utils/polyfills';
 export { default as gaTrackErrors } from './utils/gaTrackErrors';
 export { default as debounce } from './utils/debounce';
+export { default as throttle } from './utils/throttle';
 export { default as Dispatcher } from './dispatcher/Dispatcher';
 export { EventTypes };
 export { default as logger } from './utils/Logger';

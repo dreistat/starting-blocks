@@ -14,63 +14,63 @@ const _ = "SB_BEFORE_PAGE_LOAD", L = "SB_AFTER_PAGE_LOAD", F = "SB_AFTER_DOM_APP
   START_SPLASHSCREEN_HIDE: J,
   AFTER_SPLASHSCREEN_HIDE: I
 }, Symbol.toStringTag, { value: "Module" }));
-var h, g = ".", N = "function", M = "string", j = "__global__", E = "Provider", Q = 0, P = Array.prototype.slice, Z = function(t, e) {
+var f, p = ".", N = "function", M = "string", j = "__global__", E = "Provider", Q = 0, P = Array.prototype.slice, Z = function(t, e) {
   var i = t[e];
-  if (i === void 0 && h.config.strict)
+  if (i === void 0 && f.config.strict)
     throw new Error("Bottle was unable to resolve a service.  `" + e + "` is undefined.");
   return i;
 }, m = function(t) {
   var e;
-  return this.nested[t] || (e = h.pop(), this.nested[t] = e, this.factory(t, function() {
+  return this.nested[t] || (e = f.pop(), this.nested[t] = e, this.factory(t, function() {
     return e.container;
   })), this.nested[t];
 }, $ = function(t) {
-  return t.split(g).reduce(Z, this);
+  return t.split(p).reduce(Z, this);
 }, ee = function(t, e, i, r) {
   var s = {
     configurable: !0,
     enumerable: !0
   };
   return t.length ? s.get = function() {
-    var l = 0, c = function(w) {
-      if (w)
-        throw w;
-      t[l] && t[l++](i, c);
+    var c = 0, l = function(g) {
+      if (g)
+        throw g;
+      t[c] && t[c++](i, l);
     };
-    return c(), i;
+    return l(), i;
   } : (s.value = i, s.writable = !0), Object.defineProperty(r, e, s), r[e];
 }, te = function(t, e) {
   var i, r;
-  return typeof t === N && (e = t, t = j), i = t.split(g), r = i.shift(), i.length ? m.call(this, r).middleware(i.join(g), e) : (this.middlewares[r] || (this.middlewares[r] = []), this.middlewares[r].push(e)), this;
+  return typeof t === N && (e = t, t = j), i = t.split(p), r = i.shift(), i.length ? m.call(this, r).middleware(i.join(p), e) : (this.middlewares[r] || (this.middlewares[r] = []), this.middlewares[r].push(e)), this;
 }, ie = function(t, e) {
   return e(t);
 }, T = function(t, e) {
   return (t[e] || []).concat(t.__global__ || []);
 }, re = function(t, e) {
-  var i, r, s, o, l;
-  return this.id, s = this.container, o = this.decorators, l = this.middlewares, i = t + E, r = /* @__PURE__ */ Object.create(null), r[i] = {
+  var i, r, s, o, c;
+  return this.id, s = this.container, o = this.decorators, c = this.middlewares, i = t + E, r = /* @__PURE__ */ Object.create(null), r[i] = {
     configurable: !0,
     enumerable: !0,
     get: function() {
-      var v = new e();
-      return delete s[i], s[i] = v, v;
+      var h = new e();
+      return delete s[i], s[i] = h, h;
     }
   }, r[t] = {
     configurable: !0,
     enumerable: !0,
     get: function() {
-      var v = s[i], w;
-      return v && (w = T(o, t).reduce(ie, v.$get(s)), delete s[i], delete s[t]), w === void 0 ? w : ee(
-        T(l, t),
+      var h = s[i], g;
+      return h && (g = T(o, t).reduce(ie, h.$get(s)), delete s[i], delete s[t]), g === void 0 ? g : ee(
+        T(c, t),
         t,
-        w,
+        g,
         s
       );
     }
   }, Object.defineProperties(s, r), this;
 }, z = function(t, e) {
   var i, r;
-  return i = t.split(g), this.providerMap[t] && i.length === 1 && !this.container[t + E] ? console.error(t + " provider already instantiated.") : (this.originalProviders[t] = e, this.providerMap[t] = !0, r = i.shift(), i.length ? (m.call(this, r).provider(i.join(g), e), this) : re.call(this, r, e));
+  return i = t.split(p), this.providerMap[t] && i.length === 1 && !this.container[t + E] ? console.error(t + " provider already instantiated.") : (this.originalProviders[t] = e, this.providerMap[t] = !0, r = i.shift(), i.length ? (m.call(this, r).provider(i.join(p), e), this) : re.call(this, r, e));
 }, k = function(t, e) {
   return z.call(this, t, function() {
     this.$get = e;
@@ -78,8 +78,8 @@ var h, g = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
 }, G = function(t, e, i) {
   var r = arguments.length > 3 ? P.call(arguments, 3) : [], s = this;
   return k.call(this, t, function() {
-    var l = e, c = r.map($, s.container);
-    return i ? new (e.bind.apply(e, [null].concat(c)))() : l.apply(null, c);
+    var c = e, l = r.map($, s.container);
+    return i ? new (e.bind.apply(e, [null].concat(l)))() : c.apply(null, l);
   });
 }, ne = function(t, e) {
   return G.apply(this, [t, e, !0].concat(P.call(arguments, 2)));
@@ -97,7 +97,7 @@ var h, g = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
   return i || (i = {}, q.call(t, e, i)), i;
 }, oe = function(t, e) {
   var i;
-  return i = t.split(g), t = i.pop(), q.call(i.reduce(U, this.container), t, e), this;
+  return i = t.split(p), t = i.pop(), q.call(i.reduce(U, this.container), t, e), this;
 }, ae = function(t, e) {
   Object.defineProperty(this, t, {
     configurable: !1,
@@ -106,11 +106,11 @@ var h, g = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
     writable: !1
   });
 }, ce = function(t, e) {
-  var i = t.split(g);
+  var i = t.split(p);
   return t = i.pop(), ae.call(i.reduce(U, this.container), t, e), this;
 }, W = function(t, e) {
   var i, r;
-  return typeof t === N && (e = t, t = j), i = t.split(g), r = i.shift(), i.length ? m.call(this, r).decorator(i.join(g), e) : (this.decorators[r] || (this.decorators[r] = []), this.decorators[r].push(e)), this;
+  return typeof t === N && (e = t, t = j), i = t.split(p), r = i.shift(), i.length ? m.call(this, r).decorator(i.join(p), e) : (this.decorators[r] || (this.decorators[r] = []), this.decorators[r].push(e)), this;
 }, le = function(t) {
   return this.deferred.push(t), this;
 }, ue = function(t) {
@@ -127,7 +127,7 @@ var h, g = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
   return Object.keys(t || this.container || {}).filter(he);
 }, y = {}, ge = function(t) {
   var e;
-  return typeof t === M ? (e = y[t], e || (y[t] = e = new h(), e.constant("BOTTLE_NAME", t)), e) : new h();
+  return typeof t === M ? (e = y[t], e || (y[t] = e = new f(), e.constant("BOTTLE_NAME", t)), e) : new f();
 }, fe = function(t) {
   typeof t === M ? delete y[t] : y = {};
 }, V = function(t) {
@@ -139,7 +139,7 @@ var h, g = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
   var e = this.originalProviders, i = Array.isArray(t);
   Object.keys(this.originalProviders).forEach(function(s) {
     if (!(i && t.indexOf(s) === -1)) {
-      var o = s.split(g);
+      var o = s.split(p);
       o.length > 1 && o.forEach(B, m.call(this, o[0])), B.call(this, s), this.provider(s, e[s]);
     }
   }, this);
@@ -148,7 +148,7 @@ var h, g = ".", N = "function", M = "string", j = "__global__", E = "Provider", 
     i(t);
   }), this;
 };
-h = function n(t) {
+f = function n(t) {
   if (!(this instanceof n))
     return n.pop(t);
   this.id = Q++, this.decorators = {}, this.middlewares = {}, this.nested = {}, this.providerMap = {}, this.originalProviders = {}, this.deferred = [], this.container = {
@@ -157,7 +157,7 @@ h = function n(t) {
     $list: A.bind(this)
   };
 };
-h.prototype = {
+f.prototype = {
   constant: ce,
   decorator: W,
   defer: le,
@@ -174,13 +174,13 @@ h.prototype = {
   serviceFactory: se,
   value: oe
 };
-h.pop = ge;
-h.clear = fe;
-h.list = A;
-h.config = {
+f.pop = ge;
+f.clear = fe;
+f.list = A;
+f.config = {
   strict: !1
 };
-const we = h;
+const we = f;
 function be(...n) {
   window.startingBlocksDebugLevel === 1 && console.log("[SB]", ...n);
 }
@@ -203,7 +203,7 @@ const Re = {
   warn: X,
   error: me
 };
-class f {
+class v {
   static commit(t, e) {
     const i = new window.CustomEvent(t, { detail: e });
     d("\u{1F6A9} Dispatched " + t), window.dispatchEvent(i);
@@ -219,7 +219,7 @@ class Ee extends Error {
     super(`Object of type "${t}" needs "${e}" service`), this.name = "DependencyNotFulfilledException";
   }
 }
-class p {
+class w {
   constructor(t = {}, e = "AbstractService", i = ["Config"]) {
     a(this, "_container");
     a(this, "_serviceName");
@@ -253,7 +253,7 @@ class p {
     this._container = t;
   }
 }
-class S extends p {
+class S extends w {
   boot() {
   }
 }
@@ -268,12 +268,12 @@ class Pe extends S {
   }
   async buildPage(e, i = "ajax") {
     let r = this.getService("Dom").getNodeType(e);
-    return this.hasService(r) ? this.page = this.getService(r).instance() : (r = "DefaultPage", this.page = this.getService("DefaultPage").instance()), this.page.type = r, this.page.context = i, this.page.id = e.id, this.page.rootElement = e, this.page.name = e.hasAttribute("data-node-name") ? e.getAttribute("data-node-name") : "", this.page.metaTitle = e.hasAttribute("data-meta-title") ? e.getAttribute("data-meta-title") : "", this.page.isHome = e.getAttribute("data-is-home") === "1", await this.page.init(), f.commit(x, this.page), this.hasService("Splashscreen") && !this.getService("Splashscreen").splashscreenHidden && (f.commit(O, this.page), this.getService("Splashscreen").hide().then(() => {
-      f.commit(I, this.page), this.getService("Splashscreen").splashscreenHidden = !0;
+    return this.hasService(r) ? this.page = this.getService(r).instance() : (r = "DefaultPage", this.page = this.getService("DefaultPage").instance()), this.page.type = r, this.page.context = i, this.page.id = e.id, this.page.rootElement = e, this.page.name = e.hasAttribute("data-node-name") ? e.getAttribute("data-node-name") : "", this.page.metaTitle = e.hasAttribute("data-meta-title") ? e.getAttribute("data-meta-title") : "", this.page.isHome = e.getAttribute("data-is-home") === "1", await this.page.init(), v.commit(x, this.page), this.hasService("Splashscreen") && !this.getService("Splashscreen").splashscreenHidden && (v.commit(O, this.page), this.getService("Splashscreen").hide().then(() => {
+      v.commit(I, this.page), this.getService("Splashscreen").splashscreenHidden = !0;
     })), this.page;
   }
 }
-class ke extends p {
+class ke extends w {
   async getBlockInstance(t) {
     return null;
   }
@@ -286,7 +286,7 @@ class Ae extends ke {
     return this.hasService(t) ? this.getService(t).instance() : null;
   }
 }
-class Te extends p {
+class Te extends w {
   constructor(e, i = "Dom") {
     super(e, i);
     a(this, "currentHTML");
@@ -316,7 +316,7 @@ class Te extends p {
     return i;
   }
   putContainer(e) {
-    e.style.visibility = "hidden", this.getWrapper().appendChild(e), f.commit(F, {
+    e.style.visibility = "hidden", this.getWrapper().appendChild(e), v.commit(F, {
       element: e,
       currentHTML: this.getService("Dom").currentHTML
     });
@@ -337,11 +337,11 @@ function C(n, t, e) {
     let r = this, s = arguments, o = function() {
       i = null, e || n.apply(r, Array.from(s));
     };
-    const l = e && !i;
-    i && clearTimeout(i), i = window.setTimeout(o, t), l && n.apply(r, Array.from(s));
+    const c = e && !i;
+    i && clearTimeout(i), i = window.setTimeout(o, t), c && n.apply(r, Array.from(s));
   };
 }
-class Be extends p {
+class Be extends w {
   constructor(e) {
     super(e, "AbstractPage");
     a(this, "rootElement");
@@ -524,17 +524,17 @@ class u {
   static logCredits(t, e, i, r, s) {
     let o = "#fff";
     if (typeof s < "u" && (o = s), console.log("%c   ", "font-size:3px;"), console.log("%c" + t, "background:" + e + "; color: " + o + "; font-size:14px; padding:5px 10px;"), console.log("%c   ", "font-size:3px;"), i !== null) {
-      let l = i.length;
-      if (l)
-        for (let c = 0; c < l; c++)
-          console.log(i[c].name + " - " + i[c].website);
+      let c = i.length;
+      if (c)
+        for (let l = 0; l < c; l++)
+          console.log(i[l].name + " - " + i[l].website);
     }
     if (r !== null) {
-      let l = r.length;
-      if (l) {
+      let c = r.length;
+      if (c) {
         console.log("-"), console.log("Thanks to");
-        for (let c = 0; c < l; c++)
-          console.log(r[c].name + " (" + r[c].website + ")");
+        for (let l = 0; l < c; l++)
+          console.log(r[l].name + " (" + r[l].website + ")");
       }
     }
     console.log("-"), console.log(" ");
@@ -566,9 +566,9 @@ class u {
     const e = ["", "ms", "Webkit", "Moz", "O"], i = e.length, r = document.createElement("div");
     for (let s = 0; s < i; s++) {
       let o = e[s];
-      const l = o === "" ? t : t.charAt(0).toUpperCase() + t.substring(1).toLowerCase(), c = o + l;
-      if (typeof r.style[c] < "u")
-        return c;
+      const c = o === "" ? t : t.charAt(0).toUpperCase() + t.substring(1).toLowerCase(), l = o + c;
+      if (typeof r.style[l] < "u")
+        return l;
     }
     return null;
   }
@@ -588,7 +588,7 @@ class u {
     }();
   }
 }
-class Le extends p {
+class Le extends w {
   constructor(e, i = "Transition", r = []) {
     super(e, i, r);
     a(this, "oldPage");
@@ -661,7 +661,7 @@ class Ie extends S {
     const i = u.deferred();
     let r = null;
     return this.hasService("CacheProvider") && (r = this.getService("CacheProvider").get(e)), r || (r = u.request(e), this.hasService("CacheProvider") && this.getService("CacheProvider").set(e, r)), r.then(async (s) => {
-      if (this.containerElement = this.getService("Dom").parseResponse(s), f.commit(L, {
+      if (this.containerElement = this.getService("Dom").parseResponse(s), v.commit(L, {
         container: this.containerElement,
         currentHTML: this.getService("Dom").currentHTML
       }), this.getService("Config").manualDomAppend)
@@ -710,31 +710,31 @@ class Ie extends S {
     const o = this.getCurrentUrl();
     if (this.transitionProgress && this.forceGoTo(o), this.getService("History").currentStatus().url === o)
       return;
-    typeof e == "string" || i ? this.currentState = this.getService("History").add(o, e, "ajax") : this.currentState = this.getService("History").add(o, null, "_history"), f.commit(_, {
+    typeof e == "string" || i ? this.currentState = this.getService("History").add(o, e, "ajax") : this.currentState = this.getService("History").add(o, null, "_history"), v.commit(_, {
       currentStatus: this.getService("History").currentStatus(),
       prevStatus: this.getService("History").prevStatus()
     });
-    const l = this.load(o), c = this.getTransition(
+    const c = this.load(o), l = this.getTransition(
       this.getService("History").prevStatus(),
       this.getService("History").currentStatus()
     );
-    this.transitionProgress = !0, f.commit(H, {
-      transition: c,
+    this.transitionProgress = !0, v.commit(H, {
+      transition: l,
       currentStatus: this.getService("History").currentStatus(),
       prevStatus: this.getService("History").prevStatus()
     });
-    const v = c.initTransition(
+    const h = l.initTransition(
       this.getService("PageBuilder").page,
-      l,
+      c,
       r,
       s
     );
-    l.then(this.onNewPageLoaded), v.then(this.onTransitionEnd);
+    c.then(this.onNewPageLoaded), h.then(this.onTransitionEnd);
   }
   onNewPageLoaded(e) {
     if (e) {
       const i = this.getService("History").currentStatus();
-      this.getService("Dom").updateBodyAttributes(e), this.getService("Dom").updatePageTitle(e), u.trackGoogleAnalytics(), this.currentState && e && !this.currentState.data.title && e.metaTitle && (this.currentState.data.title = e.metaTitle), f.commit(D, {
+      this.getService("Dom").updateBodyAttributes(e), this.getService("Dom").updatePageTitle(e), u.trackGoogleAnalytics(), this.currentState && e && !this.currentState.data.title && e.metaTitle && (this.currentState.data.title = e.metaTitle), v.commit(D, {
         currentStatus: i,
         prevStatus: this.getService("History").prevStatus(),
         currentHTML: this.getService("Dom").currentHTML,
@@ -743,13 +743,13 @@ class Ie extends S {
     }
   }
   onTransitionEnd() {
-    this.transitionProgress = !1, this.linkHash && (window.location.hash = "", window.location.hash = this.linkHash, this.linkHash = null), f.commit(R, {
+    this.transitionProgress = !1, this.linkHash && (window.location.hash = "", window.location.hash = this.linkHash, this.linkHash = null), v.commit(R, {
       currentStatus: this.getService("History").currentStatus(),
       prevStatus: this.getService("History").prevStatus()
     });
   }
 }
-class Ne extends p {
+class Ne extends w {
   constructor(e, i = "History") {
     super(e, i);
     a(this, "history");
@@ -789,7 +789,7 @@ class Me extends S {
     }
   }
 }
-class je extends p {
+class je extends w {
   constructor(e, i = "CacheProvider") {
     super(e, i);
     a(this, "data");
@@ -808,7 +808,7 @@ class je extends p {
     this.data = {};
   }
 }
-class De extends p {
+class De extends w {
   constructor(e, i = "AbstractBlock") {
     super(e, i);
     a(this, "type");
@@ -878,7 +878,7 @@ class ze extends S {
     return Promise.resolve();
   }
 }
-class Ge extends p {
+class Ge extends w {
   getTransition(t, e) {
   }
 }
@@ -1000,6 +1000,19 @@ function Ue() {
     );
   });
 }
+function We(n, t, e) {
+  let i, r, s, o = null, c = 0;
+  e || (e = {});
+  let l = function() {
+    c = e.leading ? Date.now() : 0, o = null, s = n.apply(i, r), o || (i = r = null);
+  };
+  return function() {
+    let h = Date.now();
+    !c && !e.leading && (c = h);
+    let g = t - (h - c);
+    return i = this, r = arguments, g <= 0 || g > t ? (o && (clearTimeout(o), o = null), c = h, s = n.apply(i, r), o || (i = r = null)) : !o && e.trailing !== !1 && (o = setTimeout(l, g)), s;
+  };
+}
 /*!
  * @name Starting Blocks
  * @license MIT
@@ -1013,14 +1026,14 @@ export {
   ke as AbstractBlockBuilder,
   $e as AbstractInViewBlock,
   Be as AbstractPage,
-  p as AbstractService,
+  w as AbstractService,
   ze as AbstractSplashscreen,
   Le as AbstractTransition,
   Ge as AbstractTransitionFactory,
   Ae as BlockBuilder,
   je as CacheProvider,
   Fe as DefaultTransition,
-  f as Dispatcher,
+  v as Dispatcher,
   He as EventTypes,
   Ne as History,
   Pe as PageBuilder,
@@ -1032,5 +1045,6 @@ export {
   Oe as default,
   Ue as gaTrackErrors,
   Re as logger,
-  qe as polyfills
+  qe as polyfills,
+  We as throttle
 };
