@@ -7,7 +7,7 @@ declare global {
         ga: any;
     }
 }
-declare type CreditsList = Credits[];
+type CreditsList = Credits[];
 /**
  * Utils class
  */

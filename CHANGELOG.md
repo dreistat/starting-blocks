@@ -8,6 +8,9 @@
 - Resolving a circular dependency now throws a clear error instead of overflowing the stack.
 - Nested (dotted) service names, decorators and middleware from BottleJS are not supported.
 - `AbstractBlock#rootElement` and `AbstractPage#rootElement` are now typed `HTMLElement` (non-nullable). They are assigned before `init()`, so subclasses no longer need null checks or `declare rootElement: HTMLElement;` overrides. Before assignment (i.e. in the constructor) the value is now `undefined` instead of `null`.
+- Dev tooling upgraded to TypeScript 7 and Vite 8 (Rolldown). `tsconfig.json` now uses `moduleResolution: "Bundler"` and an explicit `rootDir`.
+- The `dist/starting-blocks.amd.js` build was dropped, because Rolldown has no AMD output. Use `dist/starting-blocks.umd.cjs`, which still supports AMD loaders (`define.amd`). The file was never exposed through the package `exports` map.
+- `dist/` is now built for Vite 8's default target (`baseline-widely-available`), so native class fields, `?.` and `??` are emitted as-is.
 
 ## version 5.0.0 2018-03-06
 

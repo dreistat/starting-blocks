@@ -23,7 +23,7 @@
  * @author Ambroise Maupate
  */
 import type { EventType as EventTypes } from "../types/EventTypes";
-declare type EventType = EventTypes | string;
+type EventType = EventTypes | string;
 /**
  * Event dispatcher.
  */

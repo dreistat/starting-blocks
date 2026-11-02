@@ -7,16 +7,16 @@
  * exposed as own properties of `container` (so `hasOwnProperty` works before
  * a service has been instantiated).
  */
-export declare type ServiceFactory<T = any> = (container: Container) => T;
+export type ServiceFactory<T = any> = (container: Container) => T;
 export interface InstanceFactory<T = any> {
     /** Returns a new instance on every call. */
     instance(...args: any[]): T;
 }
 /** BottleJS-style provider: a constructor whose instances expose `$get`. */
-export declare type ProviderConstructor<T = any> = new () => {
+export type ProviderConstructor<T = any> = new () => {
     $get(container: Container): T;
 };
-export declare type ServiceType = 'value' | 'factory' | 'instanceFactory' | 'provider' | 'service';
+export type ServiceType = 'value' | 'factory' | 'instanceFactory' | 'provider' | 'service';
 export interface ServiceDefinition {
     $name: string;
     /** Defaults to `service`, like BottleJS. */

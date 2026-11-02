@@ -12,13 +12,13 @@ export default defineConfig({
     build: {
         lib: {
             // Could also be a dictionary or array of multiple entry points
-            entry: resolve(__dirname, 'src/main.ts'),
+            entry: resolve(import.meta.dirname, 'src/main.ts'),
             name: 'StartingBlocks',
             // the proper extensions will be added
             fileName: 'starting-blocks',
-            formats: ['amd', 'cjs', 'es', 'iife', 'umd'],
+            formats: ['cjs', 'es', 'iife', 'umd'],
         },
-        rollupOptions: {
+        rolldownOptions: {
             output: {
                 exports: 'named',
             }
