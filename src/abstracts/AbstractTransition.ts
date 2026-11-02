@@ -117,9 +117,9 @@ export default class AbstractTransition extends AbstractService {
     done () {
         this.destroyOldPage()
 
-        const visibility = this.newPage!.rootElement!.style.visibility
+        const visibility = this.newPage!.rootElement.style.visibility
         if (visibility !== 'inherit') {
-            this.newPage!.rootElement!.style.visibility = 'visible'
+            this.newPage!.rootElement.style.visibility = 'visible'
         }
 
         this.deferred!.resolve!()

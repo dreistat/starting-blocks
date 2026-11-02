@@ -34,7 +34,7 @@ export default class AbstractInViewBlock extends AbstractBlock {
         this.observer = new window.IntersectionObserver(this.onIntersectionCallback, this.observerOptions)
 
         // Add block rootElement in the observer
-        this.observer.observe(this.rootElement!)
+        this.observer.observe(this.rootElement)
     }
 
     destroyEvents () {
@@ -57,6 +57,6 @@ export default class AbstractInViewBlock extends AbstractBlock {
     offScreen (_entry: IntersectionObserverEntry) {}
 
     unobserve () {
-        this.observer!.unobserve(this.rootElement!)
+        this.observer!.unobserve(this.rootElement)
     }
 }

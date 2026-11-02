@@ -33,7 +33,15 @@ import AbstractBlock from "./AbstractBlock";
  * @abstract
  */
 export default class AbstractPage extends AbstractService {
-    rootElement: HTMLElement | null;
+    /**
+     * Container element
+     *
+     * Assigned by the PageBuilder right after instantiation, before `init()` is called,
+     * so it is always set inside lifecycle methods (but not in the constructor).
+     *
+     * @type {HTMLElement}
+     */
+    rootElement: HTMLElement;
     id: string | null;
     context: string | null;
     type: string | null;

@@ -7,6 +7,7 @@
 - `StartingBlocks#bottle` is deprecated, use `StartingBlocks#services` instead.
 - Resolving a circular dependency now throws a clear error instead of overflowing the stack.
 - Nested (dotted) service names, decorators and middleware from BottleJS are not supported.
+- `AbstractBlock#rootElement` and `AbstractPage#rootElement` are now typed `HTMLElement` (non-nullable). They are assigned before `init()`, so subclasses no longer need null checks or `declare rootElement: HTMLElement;` overrides. Before assignment (i.e. in the constructor) the value is now `undefined` instead of `null`.
 
 ## version 5.0.0 2018-03-06
 

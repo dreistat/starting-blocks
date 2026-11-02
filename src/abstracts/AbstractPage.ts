@@ -37,7 +37,15 @@ import AbstractBlock from "./AbstractBlock";
  * @abstract
  */
 export default class AbstractPage extends AbstractService {
-    public rootElement: HTMLElement | null;
+    /**
+     * Container element
+     *
+     * Assigned by the PageBuilder right after instantiation, before `init()` is called,
+     * so it is always set inside lifecycle methods (but not in the constructor).
+     *
+     * @type {HTMLElement}
+     */
+    public rootElement!: HTMLElement;
     public id: string | null;
     public context: string | null;
     public type: string | null;
@@ -56,13 +64,6 @@ export default class AbstractPage extends AbstractService {
      */
     constructor (container: object) {
         super(container, 'AbstractPage')
-
-        /**
-         * Container element
-         *
-         * @type {HTMLElement}
-         */
-        this.rootElement = null
 
         /**
          * Page id
@@ -139,7 +140,7 @@ export default class AbstractPage extends AbstractService {
          */
         // TODO(steko): maybe breaking change
         // this.blockElements = [...this.rootElement.querySelectorAll(`.${this.getService('Config').pageBlockClass}`)]
-        this.blockElements = [...Array.from<HTMLElement>(this.rootElement?.querySelectorAll(`.${this.getService('Config').pageBlockClass}`)!)]
+        this.blockElements = [...Array.from<HTMLElement>(this.rootElement.querySelectorAll(`.${this.getService('Config').pageBlockClass}`))]
 
 
         /**
@@ -159,7 +160,7 @@ export default class AbstractPage extends AbstractService {
      */
     destroy () {
         debug('🗑️ #' + this.id + ' %c[' + this.type + ']', 'color:grey')
-        this.rootElement?.parentNode?.removeChild(this.rootElement)
+        this.rootElement.parentNode?.removeChild(this.rootElement)
         this.destroyEvents()
 
         // Do not remove name class on body if destroyed page is the same as current one.
@@ -189,7 +190,7 @@ export default class AbstractPage extends AbstractService {
         window.addEventListener('resize', this.onResizeDebounce)
 
         this.domObserver = new window.MutationObserver(this.bindedUpdateBlocks)
-        this.domObserver.observe(this.rootElement!, {
+        this.domObserver.observe(this.rootElement, {
             childList: true,
             attributes: false,
             characterData: false,
@@ -238,7 +239,7 @@ export default class AbstractPage extends AbstractService {
         // Create new blocks
         // TODO(steko): this.blockElements was different
         // this.blockElements = this.rootElement?.querySelectorAll(`.${this.getService('Config').pageBlockClass}`)
-        this.blockElements = Array.from(this.rootElement?.querySelectorAll(`.${this.getService('Config').pageBlockClass}`)!)
+        this.blockElements = Array.from(this.rootElement.querySelectorAll(`.${this.getService('Config').pageBlockClass}`))
         this.blockLength = this.blockElements.length
 
         for (let blockIndex = 0; blockIndex < this.blockLength; blockIndex++) {

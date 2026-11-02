@@ -274,17 +274,16 @@ class U extends g {
     o(this, "blockElements");
     o(this, "blockLength");
     o(this, "domObserver");
-    this.rootElement = null, this.id = null, this.context = null, this.type = null, this.isHome = null, this.blocks = [], this.name = null, this.metaTitle = null, this.blockLength = null, this.blockElements = null, this.domObserver = null, this.onResize = this.onResize.bind(this), this.onResizeDebounce = v(this.onResize, 50, !1), this.bindedUpdateBlocks = v(this.updateBlocks.bind(this), 50, !1);
+    this.id = null, this.context = null, this.type = null, this.isHome = null, this.blocks = [], this.name = null, this.metaTitle = null, this.blockLength = null, this.blockElements = null, this.domObserver = null, this.onResize = this.onResize.bind(this), this.onResizeDebounce = v(this.onResize, 50, !1), this.bindedUpdateBlocks = v(this.updateBlocks.bind(this), 50, !1);
   }
   async init() {
-    var e;
-    u("\u2733\uFE0F #" + this.id + " %c[" + this.type + "] [" + this.context + "]", "color:grey"), this.blockElements = [...Array.from((e = this.rootElement) == null ? void 0 : e.querySelectorAll(`.${this.getService("Config").pageBlockClass}`))], this.blockLength = this.blockElements.length, this.blockLength && await this.initBlocks(), this.initEvents();
+    u("\u2733\uFE0F #" + this.id + " %c[" + this.type + "] [" + this.context + "]", "color:grey"), this.blockElements = [...Array.from(this.rootElement.querySelectorAll(`.${this.getService("Config").pageBlockClass}`))], this.blockLength = this.blockElements.length, this.blockLength && await this.initBlocks(), this.initEvents();
   }
   destroy() {
-    var e, i, n, s;
-    if (u("\u{1F5D1}\uFE0F #" + this.id + " %c[" + this.type + "]", "color:grey"), (i = (e = this.rootElement) == null ? void 0 : e.parentNode) == null || i.removeChild(this.rootElement), this.destroyEvents(), this.getService("PageBuilder").page !== null && this.getService("PageBuilder").page.name !== this.name && document.body.classList.remove((n = this.name) != null ? n : ""), this.getService("PageBuilder").page !== null && this.getService("PageBuilder").page.type !== this.type && document.body.classList.remove((s = this.type) != null ? s : ""), this.blocks !== null)
-      for (let a in this.blocks)
-        this.blocks.hasOwnProperty(a) && this.blocks[a].destroy();
+    var e, i, n;
+    if (u("\u{1F5D1}\uFE0F #" + this.id + " %c[" + this.type + "]", "color:grey"), (e = this.rootElement.parentNode) == null || e.removeChild(this.rootElement), this.destroyEvents(), this.getService("PageBuilder").page !== null && this.getService("PageBuilder").page.name !== this.name && document.body.classList.remove((i = this.name) != null ? i : ""), this.getService("PageBuilder").page !== null && this.getService("PageBuilder").page.type !== this.type && document.body.classList.remove((n = this.type) != null ? n : ""), this.blocks !== null)
+      for (let s in this.blocks)
+        this.blocks.hasOwnProperty(s) && this.blocks[s].destroy();
   }
   initEvents() {
     window.addEventListener("resize", this.onResizeDebounce), this.domObserver = new window.MutationObserver(this.bindedUpdateBlocks), this.domObserver.observe(this.rootElement, {
@@ -306,19 +305,18 @@ class U extends g {
       typeof this.blocks[e].onPageReady == "function" && this.blocks[e].onPageReady();
   }
   async updateBlocks() {
-    var e;
-    u("	\u{1F4EF} Page DOM changed\u2026"), this.blockElements = Array.from((e = this.rootElement) == null ? void 0 : e.querySelectorAll(`.${this.getService("Config").pageBlockClass}`)), this.blockLength = this.blockElements.length;
-    for (let i = 0; i < this.blockLength; i++) {
-      let n = this.blockElements[i];
-      const s = this.getBlockById(n.id);
-      if (!n.id)
+    u("	\u{1F4EF} Page DOM changed\u2026"), this.blockElements = Array.from(this.rootElement.querySelectorAll(`.${this.getService("Config").pageBlockClass}`)), this.blockLength = this.blockElements.length;
+    for (let e = 0; e < this.blockLength; e++) {
+      let i = this.blockElements[e];
+      const n = this.getBlockById(i.id);
+      if (!i.id)
         break;
-      if (s === null)
+      if (n === null)
         try {
-          let a = await this.initSingleBlock(this.blockElements[i]);
-          a && (this.blocks.push(a), a.onPageReady());
-        } catch (a) {
-          B(a.message);
+          let s = await this.initSingleBlock(this.blockElements[e]);
+          s && (this.blocks.push(s), s.onPageReady());
+        } catch (s) {
+          B(s.message);
         }
     }
   }
@@ -734,7 +732,7 @@ class X extends g {
     o(this, "rootElement");
     o(this, "id");
     o(this, "name");
-    this.type = null, this.page = null, this.rootElement = null, this.id = null, this.name = null;
+    this.type = null, this.page = null, this.id = null, this.name = null;
   }
   init() {
     u("	\u2733\uFE0F #" + this.id + " %c[" + this.type + "]", "color:grey");
