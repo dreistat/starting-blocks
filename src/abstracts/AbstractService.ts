@@ -7,14 +7,16 @@
 
 import UnknownServiceException from '../errors/UnknownServiceException'
 import DependencyNotFulfilledException from '../errors/DependencyNotFulfilledException'
+import { Container } from '../container/ServiceContainer'
 
 export default class AbstractService {
 
-    private _container: Record<string, any>;
+    private _container: Container;
     private _serviceName;
 
-    constructor (container = {}, serviceName = 'AbstractService', dependencies = ['Config']) {
-        this._container = container
+    // Accepts any object so subclasses typing their container loosely keep compiling.
+    constructor (container: object = {}, serviceName = 'AbstractService', dependencies = ['Config']) {
+        this._container = container as Container
         this._serviceName = serviceName
 
         this.checkDependencies(dependencies)
@@ -23,7 +25,7 @@ export default class AbstractService {
     init () {}
 
     hasService (serviceName: string) {
-        return this._container.hasOwnProperty(serviceName)
+        return Object.prototype.hasOwnProperty.call(this._container, serviceName)
     }
 
     checkDependencies (dependencies: string[] = []) {

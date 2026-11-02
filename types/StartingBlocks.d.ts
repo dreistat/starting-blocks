@@ -1,4 +1,4 @@
-import Bottle from 'bottlejs';
+import ServiceContainer, { Container, ServiceFactory } from './container/ServiceContainer';
 /**
  * @namespace
  * @type {Object} defaults                      - Default config
@@ -28,13 +28,18 @@ declare global {
     }
 }
 export default class StartingBlocks {
-    bottle: Bottle<string>;
-    bootables: any[];
+    readonly services: ServiceContainer;
+    bootables: string[];
     constructor(config?: StartingBlocksOptions);
-    provider(id: string, ClassName: any, ...args: any): void;
-    factory(id: string, f: any): void;
-    instanceFactory(id: string, f: any): void;
-    bootableProvider(id: string, ClassName: any, ...args: any): void;
+    /**
+     * @deprecated Use `services` instead. BottleJS has been replaced by the
+     * built-in ServiceContainer; this alias will be removed in a future release.
+     */
+    get bottle(): ServiceContainer;
+    provider(id: string, ClassName: new (container: Container, ...args: any[]) => any, ...args: any[]): void;
+    factory<T>(id: string, f: ServiceFactory<T>): void;
+    instanceFactory<T>(id: string, f: (container: Container, ...args: any[]) => T): void;
+    bootableProvider(id: string, ClassName: new (container: Container, ...args: any[]) => any, ...args: any[]): void;
     boot(): void;
 }
 export {};

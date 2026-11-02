@@ -4,7 +4,7 @@
  * @file StartingBlocks.js
  * @author Adrien Scholaert <adrien@rezo-zero.com>
  */
-import Bottle from 'bottlejs'
+import ServiceContainer, { Container, ServiceFactory } from './container/ServiceContainer'
 import PageBuilder from './services/PageBuilder.js'
 import BlockBuilder from './services/BlockBuilder.js'
 import Dom from './services/Dom.js'
@@ -54,48 +54,52 @@ declare global {
 
 export default class StartingBlocks {
 
-    public bottle;
-    public bootables: any[]
+    public readonly services: ServiceContainer
+    public bootables: string[]
 
     constructor (config: StartingBlocksOptions = {}) {
-        this.bottle = new Bottle()
+        this.services = new ServiceContainer()
         this.bootables = []
 
-        this.bottle.value('Config', {
+        this.services.value('Config', {
             ...CONFIG_DEFAULTS,
             ...config
         })
 
-        window.startingBlocksDebugLevel = this.bottle.container.Config.debug
+        window.startingBlocksDebugLevel = this.services.container.Config.debug
 
         this.provider('Dom', Dom)
         this.provider('BlockBuilder', BlockBuilder)
-        this.instanceFactory('DefaultPage', (c: any) => {
+        this.instanceFactory('DefaultPage', (c: Container) => {
             return new DefaultPage(c)
         })
     }
 
-    provider (id: string, ClassName: any, ...args: any) {
+    /**
+     * @deprecated Use `services` instead. BottleJS has been replaced by the
+     * built-in ServiceContainer; this alias will be removed in a future release.
+     */
+    get bottle (): ServiceContainer {
+        return this.services
+    }
+
+    provider (id: string, ClassName: new (container: Container, ...args: any[]) => any, ...args: any[]) {
         if (!id || !ClassName) {
             throw new Error('A parameter is missing')
         }
 
-        this.bottle.provider(id, function (this: any) {
-            this.$get = (container: any) => {
-                return new ClassName(container, ...args)
-            }
-        })
+        this.services.factory(id, (container) => new ClassName(container, ...args))
     }
 
-    factory (id: string, f: any) {
-        this.bottle.factory(id, f)
+    factory<T> (id: string, f: ServiceFactory<T>) {
+        this.services.factory(id, f)
     }
 
-    instanceFactory (id: string, f: any) {
-        this.bottle.instanceFactory(id, f)
+    instanceFactory<T> (id: string, f: (container: Container, ...args: any[]) => T) {
+        this.services.instanceFactory(id, f)
     }
 
-    bootableProvider (id: string, ClassName: any, ...args: any) {
+    bootableProvider (id: string, ClassName: new (container: Container, ...args: any[]) => any, ...args: any[]) {
         this.provider(id, ClassName, ...args)
         this.bootables.push(id)
     }
@@ -104,8 +108,8 @@ export default class StartingBlocks {
         this.bootableProvider('PageBuilder', PageBuilder)
 
         for (const serviceName of this.bootables) {
-            if (this.bottle.container.hasOwnProperty(serviceName)) {
-                this.bottle.container[serviceName].boot()
+            if (this.services.has(serviceName)) {
+                this.services.container[serviceName].boot()
             }
         }
     }

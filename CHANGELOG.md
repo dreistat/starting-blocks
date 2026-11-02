@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Removed the `bottlejs` dependency: *Starting Blocks* now has no runtime dependencies.
+- New built-in `ServiceContainer` (exported, with `Container`, `InstanceFactory`, `ServiceDefinition` types) keeps BottleJS semantics: lazy singletons, `instanceFactory().instance()`, overriding a service before it is instantiated, and `container.$register()`.
+- `StartingBlocks#bottle` is deprecated, use `StartingBlocks#services` instead.
+- Resolving a circular dependency now throws a clear error instead of overflowing the stack.
+- Nested (dotted) service names, decorators and middleware from BottleJS are not supported.
+
 ## version 5.0.0 2018-03-06
 
 - Drop jquery and waitForImages

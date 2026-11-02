@@ -92,6 +92,9 @@ startingBlocks.boot()
 ## Services
 
 *Starting Blocks* use a dependency injection container to delegate object creation and handle dependencies.
+The container is built in (`ServiceContainer`, no runtime dependencies) and keeps the BottleJS API that earlier versions used:
+`provider`, `factory`, `instanceFactory`, `value` and `container.$register(...)` behave exactly as before.
+It is available as `startingBlocks.services` (`startingBlocks.bottle` still works but is deprecated).
 You can use or provide these standard services to enhance your website :
 
 | Service name | Init type | Ready to use | Dependencies | Description

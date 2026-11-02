@@ -31,6 +31,8 @@ export { default as gaTrackErrors } from './utils/gaTrackErrors';
 export { default as debounce } from './utils/debounce';
 export { default as throttle } from './utils/throttle';
 export { default as Dispatcher } from './dispatcher/Dispatcher';
+export { default as ServiceContainer } from './container/ServiceContainer';
+export type { Container, InstanceFactory, ServiceDefinition, ServiceFactory, ServiceType, ProviderConstructor } from './container/ServiceContainer';
 export { EventTypes };
 export { default as logger } from './utils/Logger';
 export default StartingBlocks;
